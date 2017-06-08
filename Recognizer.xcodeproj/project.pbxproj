@@ -13,6 +13,7 @@
 		BEE3DBA81EE9F77300D84968 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEE3DBA71EE9F77300D84968 /* Assets.xcassets */; };
 		BEE3DBAB1EE9F77300D84968 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEE3DBA91EE9F77300D84968 /* LaunchScreen.storyboard */; };
 		BEE3DBB61EE9F77300D84968 /* RecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE3DBB51EE9F77300D84968 /* RecognizerTests.swift */; };
+		BEE3DBC11EE9F94500D84968 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BEE3DBC01EE9F94500D84968 /* Resnet50.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		BEE3DBB11EE9F77300D84968 /* RecognizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecognizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEE3DBB51EE9F77300D84968 /* RecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerTests.swift; sourceTree = "<group>"; };
 		BEE3DBB71EE9F77300D84968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEE3DBC01EE9F94500D84968 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Resnet50.mlmodel; path = ../../../Downloads/Resnet50.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		BEE3DB9F1EE9F77300D84968 /* Recognizer */ = {
 			isa = PBXGroup;
 			children = (
+				BEE3DBC01EE9F94500D84968 /* Resnet50.mlmodel */,
 				BEE3DBA01EE9F77300D84968 /* AppDelegate.swift */,
 				BEE3DBA21EE9F77300D84968 /* ViewController.swift */,
 				BEE3DBA41EE9F77300D84968 /* Main.storyboard */,
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEE3DBA31EE9F77300D84968 /* ViewController.swift in Sources */,
+				BEE3DBC11EE9F94500D84968 /* Resnet50.mlmodel in Sources */,
 				BEE3DBA11EE9F77300D84968 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

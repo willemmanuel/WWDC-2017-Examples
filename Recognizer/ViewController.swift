@@ -7,19 +7,51 @@
 //
 
 import UIKit
+import Vision
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel! {
+        didSet {
+            label.text = ""
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func didTapButton(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        self.show(picker, sender: self)
     }
-
-
 }
 
+extension ViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = pickedImage
+            let model = try! VNCoreMLModel(for: Resnet50().model)
+            let request = VNCoreMLRequest(model: model, completionHandler: vnResultHandler)
+            
+            let handler = VNImageRequestHandler(cgImage: pickedImage.cgImage!, orientation: 0, options: [:])
+            try? handler.perform([request])
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func vnResultHandler(request: VNRequest, error: Error?) {
+        guard let result = request.results as? [VNClassificationObservation] else {
+            label.text = "¯\\_(ツ)_/¯"
+            return
+        }
+        
+        label.text = result.first?.identifier
+    }
+}
+
+extension ViewController: UINavigationControllerDelegate {
+    
+}
